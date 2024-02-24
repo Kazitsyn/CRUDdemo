@@ -40,6 +40,8 @@ public class UserRepository {
         jdbc.update(sql, ind);
     }
 
-    //public void deleteById(int id)
-    //"DELETE FROM userTable WHERE id=?"
+   public void updateById(User user){
+       String sql = "UPDATE userTable SET firstName=?, lastName=?  WHERE id=?";
+       jdbc.update(sql, user.getFirstName(), user.getLastName(), user.getId());
+   }
 }
