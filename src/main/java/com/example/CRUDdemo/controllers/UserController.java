@@ -1,6 +1,7 @@
 package com.example.CRUDdemo.controllers;
 import com.example.CRUDdemo.model.User;
 import com.example.CRUDdemo.service.UserService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
+@Log
 public class UserController {
     private final UserService userService;
 
@@ -18,7 +20,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
     @GetMapping("/users")
     public String findAll(Model model){
         List<User> users = userService.findAll();
