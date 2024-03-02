@@ -1,4 +1,4 @@
-package com.example.CRUDdemo.repositories;
+package com.example.CRUDdemo.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

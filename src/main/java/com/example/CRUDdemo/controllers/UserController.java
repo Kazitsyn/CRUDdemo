@@ -23,11 +23,8 @@ public class UserController {
     @GetMapping("/users")
     public String findAll(Model model){
         List<User> users = userService.findAll();
-
-
         model.addAttribute("users", users);
         return "user-list";
-        //return "home.html";
     }
 
     @GetMapping("/user-create")
@@ -38,12 +35,14 @@ public class UserController {
     @PostMapping("/user-create")
     public String createUser(User user){
         userService.saveUser(user);
+        log.info("user-create" + user);
         return "redirect:/users";
     }
 
     @GetMapping("user-delete/{id}")
     public String deleteUser(@PathVariable("id") int id){
         userService.deleteById(id);
+        log.info("user-delete");
         return "redirect:/users";
     }
 
@@ -55,6 +54,7 @@ public class UserController {
     @PostMapping("/user-update")
     public String updateUser(User user){
         userService.updateById(user);
+        log.info("user-update" + user);
         return "redirect:/users";
     }
 }
