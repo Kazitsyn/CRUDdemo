@@ -1,6 +1,8 @@
 package com.example.CRUDdemo.controllers;
 import com.example.CRUDdemo.model.User;
 import com.example.CRUDdemo.service.UserService;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import java.util.List;
 @Controller
 @Log
 public class UserController {
+
+    private final Counter requestCounter = Metrics.counter("add_count");
     private final UserService userService;
 
     @Autowired
@@ -36,6 +40,7 @@ public class UserController {
     public String createUser(User user){
         userService.saveUser(user);
         log.info("user-create" + user);
+        requestCounter.increment();
         return "redirect:/users";
     }
 
