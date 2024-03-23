@@ -1,4 +1,5 @@
 package com.example.CRUDdemo.model;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Objects;
